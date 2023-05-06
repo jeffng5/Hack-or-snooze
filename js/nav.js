@@ -34,3 +34,10 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
+
+// another submit button to add a story
+function submitEntry() {
+let navEle= document.getElementById('submit')
+navEle.addEventListener("click", function(evt){ evt.preventDefault(); 
+addStory()
+})}

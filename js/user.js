@@ -42,7 +42,7 @@ async function signup(evt) {
   // User.signup retrieves user info from API and returns User instance
   // which we'll make the globally-available, logged-in user.
   currentUser = await User.signup(username, password, name);
-
+  console.log(currentUser)
   saveUserCredentialsInLocalStorage();
   updateUIOnUserLogin();
 
@@ -76,12 +76,15 @@ async function checkForRememberedUser() {
   console.debug("checkForRememberedUser");
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
+  
   if (!token || !username) return false;
 
   // try to log in with these credentials (will be null if login failed)
   currentUser = await User.loginViaStoredCredentials(token, username);
 }
-
+const favorited= localStorage.getItem("favorites")
+console.log(favorited)
+console.log($('input.picked#selected').checked=false)
 /** Sync current user information to localStorage.
  *
  * We store the username/token in localStorage so when the page is refreshed
@@ -93,6 +96,7 @@ function saveUserCredentialsInLocalStorage() {
   if (currentUser) {
     localStorage.setItem("token", currentUser.loginToken);
     localStorage.setItem("username", currentUser.username);
+    localStorage.setItem("favorites", $('label input.picked#selected').checked=true);  
   }
 }
 
