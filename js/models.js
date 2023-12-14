@@ -2,7 +2,6 @@
 
 const BASE_URL = "https://hack-or-snooze-v3.herokuapp.com";
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplZmZuIiwiaWF0IjoxNjgyNDYzOTU4fQ.MJG-wYlHQK-reBwSPBGPcrtp2Pl7X1vjTnXwHUykcD4"
 /******************************************************************************
  * Story: a single story in the system
  */
@@ -24,12 +23,11 @@ class Story {
 
   /** Parses hostname out of URL and returns it. */
 
-  getHostName(){ 
-  return
-     'hostname.com'};}
+  getHostName() {
     // UNIMPLEMENTED: complete this function!
-  
-
+    return "hostname.com";
+  }
+}
 
 
 /******************************************************************************
@@ -39,7 +37,6 @@ class Story {
 class StoryList {
   constructor(stories) {
     this.stories = stories;
-    this.username= currentUser
   }
 
   /** Generate a new StoryList. It:
@@ -51,7 +48,6 @@ class StoryList {
    */
 
   static async getStories() {
-    let BASE_URL='https://hack-or-snooze-v3.herokuapp.com'
     // Note presence of `static` keyword: this indicates that getStories is
     //  **not** an instance method. Rather, it is a method that is called on the
     //  class directly. Why doesn't it make sense for getStories to be an
@@ -65,13 +61,10 @@ class StoryList {
 
     // turn plain old story objects from API into instances of Story class
     const stories = response.data.stories.map(story => new Story(story));
+
     // build an instance of our own class using the new array of stories
-
-  return new StoryList(stories)}
-  
-  
-
-  
+    return new StoryList(stories);
+  }
 
   /** Adds story data to API, makes a Story instance, adds it to story list.
    * - user - the current instance of User who will post the story
@@ -80,27 +73,11 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  // async addStory(username) {
+  async addStory( /* user, newStory */) {
     // UNIMPLEMENTED: complete this function!
-
-async addStory(user, { title, author, url }) {
-      const token = user.loginToken;
-      const response = await axios({
-        method: "POST",
-        url: `${BASE_URL}/stories`,
-        data: { token, story: { title, author, url } },
-      });
-  
-      const story = new Story(response.data.story);
-      this.stories.unshift(story);
-      user.ownStories.unshift(story);
-  
-      return story;
-    }
+  }
 }
-  // let newStory = await storyList.addStory(this.username,
-  // {title: "Test", author: "Me", url: "http://meow.com"});
-  // console.log(newStory instanceof Story);      // should be true!
+
 
 /******************************************************************************
  * User: a user in the system (only used to represent the current user)
@@ -145,7 +122,7 @@ class User {
       method: "POST",
       data: { user: { username, password, name } },
     });
-  
+
     let { user } = response.data
 
     return new User(
@@ -156,9 +133,8 @@ class User {
         favorites: user.favorites,
         ownStories: user.stories
       },
-      
+      response.data.token
     );
-  
   }
 
   /** Login in user with API, make User instance & return it.
@@ -218,4 +194,3 @@ class User {
     }
   }
 }
-

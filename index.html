@@ -35,29 +35,17 @@
 <!-- top navigation bar -->
 <nav>
   <div class="navbar-brand">
-    <a class="nav-link" href="index.html" id="nav-all">Hack or Snooze</a>
-    <a class="nav-link" id = 'submit' href="">submit</a> 
-    <a class='nav-link' href="favorites.html">favorites</a>
-    <a class="nav-link" href="#">my stories</a>
+    <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
-    <a class="nav-link" href="user.js" id="nav-user-profile"></a>
-    <a class="hidden" id="nav-logout" href="user.js"><small>(logout)</small></a>
+    <a class="nav-link" href="#" id="nav-user-profile"></a>
+    <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
 </nav>
 
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
-  <form>
-    <label>title:</label>
-    <input type="text" id="title">
-    <label>author:</label>
-    <input type="text" id="author">
-    <label>url:</label>
-    <input type="text" id="url">
-    <button>Submit</button> 
-  </form>
 
   <!-- loading message (removed by JS after stories loaded) -->
   <div id="stories-loading-msg">Loading&hellip;</div>
@@ -65,12 +53,12 @@
   <!-- List of all stories -->
   <ol id="all-stories-list" class="stories-list"></ol>
 
-</section> 
+</section>
 
-<!-- Login and signup forms
+<!-- Login and signup forms -->
 <section class="account-forms-container container">
 
-  <-- Login form -->
+  <!-- Login form -->
   <form action="#" id="login-form" class="account-form hidden" method="post">
     <h4>Login</h4>
     <div class="login-input">
@@ -106,7 +94,7 @@
     </div>
     <button type="submit">create account</button>
   </form>
-</section> 
+</section>
 
 <!-- Library JS & our JS -->
 <script src="https://unpkg.com/jquery"></script>
